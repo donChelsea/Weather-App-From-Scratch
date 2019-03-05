@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">WeatherAppFromScratch</string>
+    <string name="day_here">Day here</string>
+    <string name="day_high">Day high</string>
+    <string name="day_low">Day low</string>
+</resources>
