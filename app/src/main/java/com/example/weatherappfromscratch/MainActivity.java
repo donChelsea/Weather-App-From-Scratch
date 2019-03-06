@@ -24,6 +24,8 @@ import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
+    private static final String CLIENT_ID = "Xrojwf0CVEM7GcVysgEbl";
+    private static final String SECRET_KEY = "4U5n53YUKe7hdIBQdY6toMmCi2iIu2a2siNuIBJn";
     RecyclerView recyclerView;
     Retrofit retrofit;
     List<Integer> weatherIcons = new ArrayList<>(Arrays.asList(R.drawable.blizzard, R.drawable.blowingsnow, R.drawable.clear, R.drawable.drizzle, R.drawable.fair, R.drawable.flurriesw, R.drawable.hazy));
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         retrofit = new RetrofitSingleton().getInstance();
         WeatherService weatherService = retrofit.create(WeatherService.class);
-        Call<ResponseList> responseListCall = weatherService.getResponse();
+        Call<ResponseList> responseListCall = weatherService.getResponse(CLIENT_ID, SECRET_KEY);
         responseListCall.enqueue(new Callback<ResponseList>() {
             @Override
             public void onResponse(Call<ResponseList> call, Response<ResponseList> response) {
