@@ -10,27 +10,17 @@ import android.widget.Button;
 
 import com.example.weatherappfromscratch.controller.WeatherAdapter;
 import com.example.weatherappfromscratch.model.Periods;
-import com.example.weatherappfromscratch.model.ResponseList;
 import com.example.weatherappfromscratch.model.Weather;
 import com.example.weatherappfromscratch.network.RetrofitSingleton;
 import com.example.weatherappfromscratch.network.WeatherService;
-import com.jakewharton.rxbinding3.view.RxView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
-import kotlin.Unit;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -59,14 +49,5 @@ public class MainActivity extends AppCompatActivity {
                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 }, throwable -> Log.d(TAG, "onFailure: ---" + throwable.getMessage())
                 );
-
-        RxView.clicks(button)
-                .debounce(1L, TimeUnit.SECONDS)
-                .map((Function<Unit, String>) unit -> {
-                    return null; // map the item to a string
-                })
-                .subscribe(click -> {
-                    // change weather formatting
-                });
     }
 }
